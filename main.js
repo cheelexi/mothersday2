@@ -1,14 +1,10 @@
-// TODO
-//
-//      1) Basic Layout
-//      2) Click Event to Start Things
-//      3) Create the Add Screen Functionality
-//      4) Run Through Screens
-
-// GIVEN
-//      -Images
-//      -Song
-//      -Fonts
+const flower = {
+    image: "img/flower.png",
+    imageAnimation: "fadeIn",
+    text: "Here is your flower",
+    textAnimation: "fadeIn",
+    textColor: "#E07CA0"
+};
 
 (() => {
     // variables
@@ -19,40 +15,60 @@
     let isPlaying = false
     const screens = [
         {
-            image: "img/coolest.png",
+            image: "img/mompic.png",
             imageAnimation: "spinImage",
-            text: "Coolest",
+            text: "You Are the Most...",
             textAnimation: "fade",
             textColor: "#4169e1"
         },
         {
-            image: "img/smartest.png",
+            image: "img/Caring.png",
             imageAnimation: "growSpinImage",
-            text: "Smartest",
+            text: "Most Caring🥹",
             textAnimation: "fade",
             textColor: "#ff781f"
         },
         {
-            image: "img/nicest.png",
+            image: "img/flowermom.png",
             imageAnimation: "fade",
-            text: "Nicest",
+            text: "the cutest😅",
             textAnimation: "fade",
             textColor: "#00a86b"
         },
         {
-            image: "img/patient.png",
+            image: "img/Youngme.png",
             imageAnimation: "spinImage",
-            text: "Most Patient",
+            text: "Most Patient😡",
             textAnimation: "fade",
             textColor: "#663399"
         },
         {
-            image: "img/best.png",
+            image: "img/kissmom.png",
+            imageAnimation: "spinImage",
+            text: "Most loving🥳",
+            textAnimation: "fadein",
+            textColor: "#663399"
+        },
+        {
+            image: "img/patient.png",
+            imageAnimation: "spinImage",
+            text: "Mother🤩",
+            textAnimation: "fadein",
+            textColor: "#663399"
+        },
+        {
+            image: "img/family.JPG",
             imageAnimation: "fadeIn",
-            text: "Best, Mom",
+            text: "我们是快乐一家子🥰",
             textAnimation: "fadeIn",
             textColor: "#E07CA0"
-        }
+        },
+        {
+            image: console.log(flower.image),
+            text: console.log(flower.text),
+            textColor: console.log(flower.textColor)
+        },
+        
     ]
     
     // play on press
