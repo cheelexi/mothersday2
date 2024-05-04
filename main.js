@@ -126,5 +126,18 @@
         const domParsed = dom.parseFromString(htmlString, "text/html")
         return domParsed.body.children[0]
     }
-
-})()
+    
+    // CSS styles for centering images
+    const style = document.createElement('style');
+    style.innerHTML = `
+        .image {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 100%;
+            max-height: 100%;
+        }
+    `;
+    document.head.appendChild(style);
+})();
