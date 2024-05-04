@@ -8,43 +8,36 @@
     const screens = [
         {
             image: "img/mompic.png",
-            imageAnimation: "spinImage",
-            text: "You Are the Most...",
-            textAnimation: "fade",
-            textColor: "#4169e1"
-        },
-        {
-            image: "img/caring.jpg",
             imageAnimation: "growSpinImage",
-            text: "Most Caring🥹",
+            text: "Most Caring 🥹",
             textAnimation: "fade",
             textColor: "#ff781f"
         },
         {
             image: "img/hug.png",
             imageAnimation: "fade",
-            text: "the cutest😅",
+            text: "the cutest 😂",
             textAnimation: "fade",
             textColor: "#00a86b"
         },
         {
             image: "img/Youngme.JPG",
             imageAnimation: "spinImage",
-            text: "Most Patient😡",
+            text: "Most Patient 😡",
             textAnimation: "fade",
             textColor: "#663399"
         },
         {
             image: "img/kissmom.png",
             imageAnimation: "spinImage",
-            text: "Most loving🥳",
+            text: "Most loving 🥳",
             textAnimation: "fadein",
             textColor: "#663399"
         },
         {
             image: "img/flowermom.jpg",
             imageAnimation: "spinImage",
-            text: "Mother🤩",
+            text: "Mother 🤩",
             textAnimation: "fadein",
             textColor: "#663399"
         },
