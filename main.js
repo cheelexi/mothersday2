@@ -37,7 +37,7 @@
         {
             image: "img/family.JPG",
             imageAnimation: "fadeIn",
-            text: "我们是快乐一家子🥰",
+            text: "Happy Family🥰",
             textAnimation: "fadeIn",
             textColor: "#E07CA0"
         },
