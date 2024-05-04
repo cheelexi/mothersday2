@@ -131,6 +131,16 @@
             max-width: 100%;
             max-height: 100%;
         }
+        @media only screen and (max-width: 600px) {
+    /* Adjust the size and position of the image for smaller screens */
+    .image {
+        width: 80%; /* Adjust the width as needed */
+        height: auto; /* Maintain aspect ratio */
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}
     `;
     document.head.appendChild(style);
 })();
