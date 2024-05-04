@@ -14,7 +14,7 @@
             textColor: "#ff781f"
         },
         {
-            image: "img/hug.png",
+            image: "img/flowermom.jpg",
             imageAnimation: "fade",
             text: "the cutest 😂",
             textAnimation: "fade",
@@ -31,13 +31,6 @@
             image: "img/kissmom.png",
             imageAnimation: "spinImage",
             text: "Most loving 🥳",
-            textAnimation: "fadein",
-            textColor: "#663399"
-        },
-        {
-            image: "img/flowermom.jpg",
-            imageAnimation: "spinImage",
-            text: "Mother 🤩",
             textAnimation: "fadein",
             textColor: "#663399"
         },
