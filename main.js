@@ -1,11 +1,3 @@
-const flower = {
-    image: "img/flower.png",
-    imageAnimation: "fadeIn",
-    text: "Here is your flower",
-    textAnimation: "fadeIn",
-    textColor: "#E07CA0"
-};
-
 (() => {
     // variables
     const song = new Audio("sounds/xiaomeiman.mp3")
@@ -22,14 +14,14 @@ const flower = {
             textColor: "#4169e1"
         },
         {
-            image: "img/caring.png",
+            image: "img/caring.jpg",
             imageAnimation: "growSpinImage",
             text: "Most Caring🥹",
             textAnimation: "fade",
             textColor: "#ff781f"
         },
         {
-            image: "img/flowermom.jpg",
+            image: "img/hug.png",
             imageAnimation: "fade",
             text: "the cutest😅",
             textAnimation: "fade",
@@ -50,7 +42,7 @@ const flower = {
             textColor: "#663399"
         },
         {
-            image: "img/patient.png",
+            image: "img/flowermom.jpg",
             imageAnimation: "spinImage",
             text: "Mother🤩",
             textAnimation: "fadein",
@@ -64,9 +56,11 @@ const flower = {
             textColor: "#E07CA0"
         },
         {
-            image: console.log(flower.image),
-            text: console.log(flower.text),
-            textColor: console.log(flower.textColor)
+            image: "img/flower.png",
+            imageAnimation: "fadeIn",
+            text: "送你一束花🌹",
+            textAnimation: "fadeIn",
+            textColor: "#E07CA0"
         },
         
     ]
