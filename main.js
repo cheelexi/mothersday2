@@ -110,22 +110,16 @@
         }
     }
 
-   function runThroughScreens (i = 0) {
-    if (i >= screens.length)
-        return
-    
-    if (i === screens.length - 2) {
-        // If it's the second last screen, hide the title
-        title.innerText = "";
+    function runThroughScreens (i = 0) {
+        if (i >= screens.length)
+            return
+        
+        addScreen(screens[i], i === screens.length - 1 ? false : true)
+
+        setTimeout(() => {
+            runThroughScreens(++i)
+        }, screenDuration)
     }
-    
-    addScreen(screens[i], i === screens.length - 1 ? false : true)
-
-    setTimeout(() => {
-        runThroughScreens(++i)
-    }, screenDuration)
-}
-
 
     function stringToDom (htmlString) {
         const dom = new DOMParser()
