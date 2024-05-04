@@ -115,13 +115,15 @@ body {
 
 /* CLASSES */
 
-image {
-    position: absolute;
+.image {
+    position: fixed;
     top: 50%;
     left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-    height: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%; /* Ensure the image does not exceed viewport width */
+    max-height: 100%; /* Ensure the image does not exceed viewport height */
 }
+
 
 
 .stage {
