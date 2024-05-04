@@ -22,21 +22,21 @@ const flower = {
             textColor: "#4169e1"
         },
         {
-            image: "img/Caring.png",
+            image: "img/caring.png",
             imageAnimation: "growSpinImage",
             text: "Most Caring🥹",
             textAnimation: "fade",
             textColor: "#ff781f"
         },
         {
-            image: "img/flowermom.png",
+            image: "img/flowermom.jpg",
             imageAnimation: "fade",
             text: "the cutest😅",
             textAnimation: "fade",
             textColor: "#00a86b"
         },
         {
-            image: "img/Youngme.png",
+            image: "img/Youngme.JPG",
             imageAnimation: "spinImage",
             text: "Most Patient😡",
             textAnimation: "fade",
