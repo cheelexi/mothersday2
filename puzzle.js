@@ -1,130 +1,99 @@
 //Initial References
-const moves = document.getElementById("moves");
 const container = document.querySelector(".container");
-const startButton = document.getElementById("start-button");
-const coverScreen = document.querySelector(".cover-screen");
-const result = document.getElementById("result");
-let currentElement = "";
-let movesCount,
-  imagesArr = [];
+let drawHearts;
+let mouseX = 0,
+  mouseY = 0;
+let hearts = [];
+//Red Shades
+let colors = ["#ff0000", "#dc143c", "#ff4040", "#ed2939", "#fe2712", "#ed1c24"];
+//Events Object
+let events = {
+  mouse: {
+    move: "mousemove",
+    stop: "mouseout",
+  },
+  touch: {
+    move: "touchmove",
+    stop: "touchend",
+  },
+};
+let deviceType = "";
+//Detect touch device
 const isTouchDevice = () => {
   try {
-    //We try to create TouchEvent (it would fail for desktops ad throw error)
+    //We try to create TouchEvent (It would fail for desktops and throw error)
     document.createEvent("TouchEvent");
+    deviceType = "touch";
     return true;
   } catch (e) {
+    deviceType = "mouse";
     return false;
   }
 };
-//Random number for image
-const randomNumber = () => Math.floor(Math.random() * 8) + 1;
-//Get row and column value from data-position
-const getCoords = (element) => {
-  const [row, col] = element.getAttribute("data-position").split("_");
-  return [parseInt(row), parseInt(col)];
-};
-//row1, col1 are image co-ordinates while row2 amd col2 are blank image co-ordinates
-const checkAdjacent = (row1, row2, col1, col2) => {
-  if (row1 == row2) {
-    //left/right
-    if (col2 == col1 - 1 || col2 == col1 + 1) {
-      return true;
-    }
-  } else if (col1 == col2) {
-    //up/down
-    if (row2 == row1 - 1 || row2 == row1 + 1) {
-      return true;
+//Random number between given range
+function randomNumberGenerator(min, max) {
+  return Math.random() * (max - min) + min;
+}
+//Create Hearts
+function startCreation() {
+  //If drawHearts = true only then start displaying hearts. This is done to stop hearts creation when mouse is not on the screen.
+  if (drawHearts) {
+    //Create Div
+    let div = document.createElement("div");
+    div.classList.add("heart-container");
+    //Set left and top based on mouse X and Y
+    div.style.left = mouseX + randomNumberGenerator(5, 50) + "px";
+    div.style.top = mouseY + randomNumberGenerator(5, 50) + "px";
+    //Random shade of Red
+    let randomColor =
+      colors[Math.floor(randomNumberGenerator(0, colors.length - 1))];
+    //heart dic
+    div.innerHTML = `<div class="heart"></div>`;
+    div.style.opacity = 1;
+    //Set the value of variable --size to random number
+    let root = document.querySelector(":root");
+    let sizeValue = randomNumberGenerator(10, 20);
+    //Random height/width value
+    //You can change this
+    root.style.setProperty("--size", sizeValue + "px");
+    root.style.setProperty("--color", randomColor);
+    container.appendChild(div);
+    //set visible flag for div
+    hearts.push({
+      visible: true,
+    });
+  }
+  updateHearts();
+  window.setTimeout(startCreation, 50);
+}
+function updateHearts() {
+  for (let i in hearts) {
+    //get div at current index
+    let heartContainer = document.getElementsByClassName("heart-container")[i];
+    //If visible
+    if (hearts[i].visible) {
+      heartContainer.style.opacity = +heartContainer.style.opacity - 0.1;
+      //If 0 set visible to false
+      if (heartContainer.style.opactiy == 0) {
+        hearts[i].visible = false;
+      }
+    } else {
+      //if div is not visible remove it and remove entry from hearts array
+      heartContainer.remove();
+      hearts.splice(i, 1);
     }
   }
-  return false;
-};
-//Fill array with random value for images
-const randomImages = () => {
-  while (imagesArr.length < 8) {
-    let randomVal = randomNumber();
-    if (!imagesArr.includes(randomVal)) {
-      imagesArr.push(randomVal);
-    }
-  }
-  imagesArr.push(9);
-};
-//Generate Grid
-const gridGenerator = () => {
-  let count = 0;
-  for (let i = 0; i < 3; i++) {
-    for (let j = 0; j < 3; j++) {
-      let div = document.createElement("div");
-      div.setAttribute("data-position", `${i}_${j}`);
-      div.addEventListener("click", selectImage);
-      div.classList.add("image-container");
-      div.innerHTML = `<img src="gradme.jpeg" class="image ${
-        imagesArr[count] == 9 ? "target" : ""
-      }" data-index="${imagesArr[count]}"/>`;
-      count += 1;
-      container.appendChild(div);
-    }
-  }
-};
-//Click the image
-const selectImage = (e) => {
-  e.preventDefault();
-  //Set currentElement
-  currentElement = e.target;
-  //target(blank image)
-  let targetElement = document.querySelector(".target");
-  let currentParent = currentElement.parentElement;
-  let targetParent = targetElement.parentElement;
-  //get row and col values for both elements
-  const [row1, col1] = getCoords(currentParent);
-  const [row2, col2] = getCoords(targetParent);
-  if (checkAdjacent(row1, row2, col1, col2)) {
-    //Swap
-    currentElement.remove();
-    targetElement.remove();
-    //Get image index(to be used later for manipulating array)
-    let currentIndex = parseInt(currentElement.getAttribute("data-index"));
-    let targetIndex = parseInt(targetElement.getAttribute("data-index"));
-    //Swap Index
-    currentElement.setAttribute("data-index", targetIndex);
-    targetElement.setAttribute("data-index", currentIndex);
-    //Swap Images
-    currentParent.appendChild(targetElement);
-    targetParent.appendChild(currentElement);
-    //Array swaps
-    let currentArrIndex = imagesArr.indexOf(currentIndex);
-    let targetArrIndex = imagesArr.indexOf(targetIndex);
-    [imagesArr[currentArrIndex], imagesArr[targetArrIndex]] = [
-      imagesArr[targetArrIndex],
-      imagesArr[currentArrIndex],
-    ];
-    //Win condition
-    if (imagesArr.join("") == "123456789") {
-      setTimeout(() => {
-        //When games ends display the cover screen again
-        coverScreen.classList.remove("hide");
-        container.classList.add("hide");
-        result.innerText = `Total Moves: ${movesCount}`;
-        startButton.innerText = "RestartGame";
-      }, 1000);
-    }
-    //Increment a display move
-    movesCount += 1;
-    moves.innerText = `Moves: ${movesCount}`;
-  }
-};
-//Start button click should display the container
-startButton.addEventListener("click", () => {
-  container.classList.remove("hide");
-  coverScreen.classList.add("hide");
-  container.innerHTML = "";
-  imagesArr = [];
-  randomImages();
-  gridGenerator();
-  movesCount = 0;
-  moves.innerText = `Moves: ${movesCount}`;
+}
+isTouchDevice();
+document.addEventListener(events[deviceType].move, function (e) {
+  mouseX = isTouchDevice() ? e.touches[0].pageX : e.pageX;
+  mouseY = isTouchDevice() ? e.touches[0].pageY : e.pageY;
+  drawHearts = true;
 });
-//Display start screen first
+document.addEventListener(events[deviceType].stop, function (e) {
+  drawHearts = false;
+});
 window.onload = () => {
-  coverScreen.classList.remove("hide");
-  container.classList.add("hide");
+  drawHearts = false;
+  startCreation();
 };
