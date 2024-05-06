@@ -7,7 +7,7 @@ const pieces = [];
 for (let i = 0; i < 16; i++) {
     const piece = document.createElement('div');
     piece.classList.add('puzzle-piece');
-    piece.style.backgroundImage = `url('img/mom_picture.jpg')`; // Replace 'mom_picture.jpg' with the actual filename of your mom's picture
+    piece.style.backgroundImage = `url('img/gradme.jpeg')`; // Replace 'mom_picture.jpg' with the actual filename of your mom's picture
     piece.style.backgroundPosition = `${-100 * (i % 4)}px ${-100 * Math.floor(i / 4)}px`;
     piece.style.width = '100px';
     piece.style.height = '100px';
