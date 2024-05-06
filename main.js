@@ -1,18 +1,9 @@
-// Listen for click on "Click to Start" button
-document.getElementById("title").addEventListener('click', function() {
-    // Hide the "Click to Start" text
-    document.getElementById("title").style.display = "none";
-    // Call the function to initialize the puzzle from puzzle.js
-    initializePuzzle();
-});
-
-
 // variables
-const song = new Audio("sounds/xiaomeiman.mp3")
-const stage = document.getElementById("stage")
-const title = document.getElementById("title")
-const screenDuration = 5000 // ms
-let isPlaying = false
+const song = new Audio("sounds/xiaomeiman.mp3");
+const stage = document.getElementById("stage");
+const title = document.getElementById("title");
+const screenDuration = 5000; // ms
+let isPlaying = false;
 const screens = [
     {
         image: "img/mompic.png",
