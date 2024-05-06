@@ -1,7 +1,7 @@
 /* Puzzle styles */
 #puzzle-container {
-    width: 800px; /* Adjust the width to fit your image */
-    height: 600px; /* Adjust the height to fit your image */
+    width: 1600px; /* Adjust the width to fit your image */
+    height: 1200px; /* Adjust the height to fit your image */
     border: 2px solid #000;
     margin: 20px auto;
     position: relative;
