@@ -57,9 +57,9 @@ function checkPuzzle() {
         }
     }
 
-    // If puzzle is solved, execute main functionality
+    // If puzzle is solved, dispatch the puzzleSolved event
     if (isSolved) {
-        // Your code to execute main functionality goes here
-        console.log("Puzzle solved correctly! Main functionality will now execute.");
+        const event = new Event('puzzleSolved');
+        document.dispatchEvent(event);
     }
 }
