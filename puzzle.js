@@ -1,3 +1,11 @@
+// Listen for click on "Click to Start" button
+document.getElementById("title").addEventListener('click', function() {
+    // Hide the "Click to Start" text
+    document.getElementById("title").style.display = "none";
+    // Call the function to initialize the puzzle
+    initializePuzzle();
+});
+
 // Function to initialize the puzzle
 function initializePuzzle() {
     // Show the puzzle container and shuffle button
