@@ -1,11 +1,3 @@
-// Listen for click on "Click to Start" button
-document.getElementById("title").addEventListener('click', function() {
-    // Hide the "Click to Start" text
-    document.getElementById("title").style.display = "none";
-    // Show the puzzle container and shuffle button
-    document.getElementById("puzzle-container").style.display = "block";
-    document.getElementById("shuffle-btn").style.display = "block";
-});
 
 
 // variables
