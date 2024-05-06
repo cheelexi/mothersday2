@@ -1,7 +1,7 @@
 /* Puzzle styles */
 #puzzle-container {
-    width: 400px;
-    height: 400px;
+    width: 1600px; /* Adjust the width to fit your image */
+    height: 1200px; /* Adjust the height to fit your image */
     border: 2px solid #000;
     margin: 20px auto;
     position: relative;
@@ -11,6 +11,7 @@
 .puzzle-piece {
     position: absolute;
     cursor: pointer;
+    background-size: cover; /* Ensure the puzzle pieces cover the entire container */
 }
 
 button {
