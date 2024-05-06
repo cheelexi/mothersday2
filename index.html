@@ -1,22 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Happy Mother's Day</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Pacifico&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles.css">
-</head>
-<body>
-    <div id="title" class="title">Click to Start</div>
-
-    <!-- Puzzle container and shuffle button (initially hidden) -->
-    <div id="puzzle-container" style="display: none;">
-        <!-- Puzzle pieces will be dynamically generated here -->
+    <!-- Google Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="cover-screen">
+      <p id="result"></p>
+      <button id="start-button">Start</button>
     </div>
-    <button id="shuffle-btn" style="display: none;">Shuffle</button>
-
-    <script src="puzzle.js"></script>
-</body>
+    <div id="moves"></div>
+    <div class="slider-game">
+      <div class="container"></div>
+      <div class="original-image">
+        <img src="original_image.png" alt="" />
+      </div>
+    </div>
+    <!-- Script -->
+    <script src="script.js"></script>
+  </body>
 </html>
