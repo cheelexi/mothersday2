@@ -1,7 +1,7 @@
 /* Puzzle styles */
 #puzzle-container {
-    width: 1600px; /* Adjust the width to fit your image */
-    height: 1200px; /* Adjust the height to fit your image */
+    width: 800px; /* Adjust the width to fit your image */
+    height: 600px; /* Adjust the height to fit your image */
     border: 2px solid #000;
     margin: 20px auto;
     position: relative;
@@ -9,17 +9,20 @@
 }
 
 .puzzle-piece {
-    position: absolute;
-    cursor: pointer;
-    background-size: contain; /* Ensure the puzzle pieces contain the entire image */
+    width: 200px;
+    height: 200px;
+    background-size: cover;
 }
 
-button {
-    display: block;
+#target-area {
+    width: 800px; /* Adjust the width to match the puzzle container */
+    height: 600px; /* Adjust the height to match the puzzle container */
+    border: 2px dashed #000;
     margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
+    position: relative;
+    overflow: hidden;
 }
+
 
 
 /* KEYFRAMES */
