@@ -1,5 +1,3 @@
-
-
 // variables
 const song = new Audio("sounds/xiaomeiman.mp3")
 const stage = document.getElementById("stage")
