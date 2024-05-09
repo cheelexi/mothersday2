@@ -4,70 +4,10 @@
     const stage = document.getElementById("stage");
     const title = document.getElementById("title");
     const screenDuration = 5000; // ms
-    let isPlaying = false;
-    const screens = [
-        {
-            image: "img/mompic.png",
-            imageAnimation: "growSpinImage",
-            text: "Most Caring 🥹",
-            textAnimation: "fade",
-            textColor: "#ff781f"
-        },
-        {
-            image: "img/flowermom.jpg",
-            imageAnimation: "fade",
-            text: "the cutest 😂",
-            textAnimation: "fade",
-            textColor: "#00a86b"
-        },
-        {
-            image: "img/Youngme.JPG",
-            imageAnimation: "spinImage",
-            text: "Most Patient 😡",
-            textAnimation: "fade",
-            textColor: "#663399"
-        },
-        {
-            image: "img/kissmom.png",
-            imageAnimation: "spinImage",
-            text: "Most loving 🥳",
-            textAnimation: "fadein",
-            textColor: "#663399"
-        },
-        {
-            image: "img/family.JPG",
-            imageAnimation: "fadeIn",
-            text: "Happy Family🥰",
-            textAnimation: "fadeIn",
-            textColor: "#E07CA0"
-        },
-        {
-            image: "img/present.jpg",
-            imageAnimation: "fadeIn",
-            text: "送你的礼物",
-            textAnimation: "fadeIn",
-            textColor: "#E07CA0"
-        },
-        
-    ];
 
     // play on press
     document.body.addEventListener('click', event => {
-        if (!isPlaying) {
-            isPlaying = true;
-            song.play();
-            title.innerText = "";
-
-            setTimeout(() => {
-                title.innerText = "You're the...";
-                runThroughScreens();
-            }, 2000);
-        }
-
-        // Check if the click occurred within the stage area
-        if (event.target === stage) {
-            createHearts();
-        }
+        console.log('Clicked on the screen');
     });
 
     function addScreen(options, deleteAfter) {
@@ -106,6 +46,52 @@
     }
 
     function runThroughScreens(i = 0) {
+        const screens = [
+            {
+                image: "img/mompic.png",
+                imageAnimation: "growSpinImage",
+                text: "Most Caring 🥹",
+                textAnimation: "fade",
+                textColor: "#ff781f"
+            },
+            {
+                image: "img/flowermom.jpg",
+                imageAnimation: "fade",
+                text: "the cutest 😂",
+                textAnimation: "fade",
+                textColor: "#00a86b"
+            },
+            {
+                image: "img/Youngme.JPG",
+                imageAnimation: "spinImage",
+                text: "Most Patient 😡",
+                textAnimation: "fade",
+                textColor: "#663399"
+            },
+            {
+                image: "img/kissmom.png",
+                imageAnimation: "spinImage",
+                text: "Most loving 🥳",
+                textAnimation: "fadein",
+                textColor: "#663399"
+            },
+            {
+                image: "img/family.JPG",
+                imageAnimation: "fadeIn",
+                text: "Happy Family🥰",
+                textAnimation: "fadeIn",
+                textColor: "#E07CA0"
+            },
+            {
+                image: "img/present.jpg",
+                imageAnimation: "fadeIn",
+                text: "送你的礼物",
+                textAnimation: "fadeIn",
+                textColor: "#E07CA0"
+            },
+            
+        ];
+
         if (i >= screens.length)
             return
         
@@ -120,19 +106,6 @@
         const dom = new DOMParser();
         const domParsed = dom.parseFromString(htmlString, "text/html");
         return domParsed.body.children[0];
-    }
-
-    // Create and animate hearts
-    function createHearts() {
-        const heartsContainer = document.createElement('div');
-        heartsContainer.id = 'hearts-container';
-        stage.appendChild(heartsContainer);
-
-        for (let i = 0; i < 10; i++) { // Adjust the number of hearts as needed
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heartsContainer.appendChild(heart);
-        }
     }
 
     // CSS styles for centering images
@@ -158,4 +131,10 @@
         }
     `;
     document.head.appendChild(style);
+
+    // Start the animation sequence
+    setTimeout(() => {
+        title.innerText = "You're the...";
+        runThroughScreens();
+    }, 2000);
 })();
