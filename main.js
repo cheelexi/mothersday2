@@ -44,7 +44,7 @@
         {
             image: "img/flower.png",
             imageAnimation: "fadeIn",
-            text: "送你一束花🌹",
+            text: "送你的礼物",
             textAnimation: "fadeIn",
             textColor: "#E07CA0"
         },
