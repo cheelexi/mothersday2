@@ -50,7 +50,18 @@
         },
         
     ]
-    
+
+    // Add this function definition to create and animate hearts
+    function createHearts() {
+        const heartsContainer = document.getElementById("hearts-container");
+
+        for (let i = 0; i < 10; i++) { // Adjust the number of hearts as needed
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heartsContainer.appendChild(heart);
+        }
+    }
+
     // play on press
     stage.addEventListener('click', _ => {
         if (isPlaying)
@@ -63,6 +74,7 @@
         setTimeout(() => {
             title.innerText = "You're the..."
             runThroughScreens()
+            createHearts(); // Call createHearts() here
         }, 2000)
     })
 
@@ -143,4 +155,33 @@
 }
     `;
     document.head.appendChild(style);
+
+    // Add these styles for the hearts
+    style.innerHTML += `
+        #hearts-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            background-color: red; /* or any other color */
+            border-radius: 50%;
+            animation: heartbeat 1s infinite alternate; /* Add animation */
+        }
+
+        @keyframes heartbeat {
+            from {
+                transform: scale(1);
+            }
+            to {
+                transform: scale(1.2);
+            }
+        }
+    `;
 })();
+
