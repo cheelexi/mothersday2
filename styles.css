@@ -13,6 +13,9 @@
     background-color: red; /* or any other color */
     border-radius: 50%;
     animation: heartbeat 1s infinite alternate; /* Add animation */
+    /* Adjust positioning to spread hearts out */
+    transform-origin: center;
+    transform: translate(-50%, -50%);
 }
 
 @keyframes heartbeat {
@@ -23,6 +26,7 @@
         transform: scale(1.2);
     }
 }
+
 
 /* KEYFRAMES */
 
