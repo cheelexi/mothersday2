@@ -67,16 +67,14 @@
     })
 
     function addScreen (options, deleteAfter) {
-
-        console.log(options)
-
         const imageElementString = `
         <img src="${
             options.image
         }" class="image ${
             options.imageAnimation || ""
         }">
-        `
+        `;
+
         const textElementString = `
         <div style="${
             options.textColor ?
@@ -87,19 +85,26 @@
         }">${
             options.text
         }</div>
-        `
+        `;
 
-        const imageElement = stringToDom(imageElementString)
-        const textElement = stringToDom(textElementString)
+        const imageElement = stringToDom(imageElementString);
+        const textElement = stringToDom(textElementString);
 
-        stage.append(imageElement)
-        stage.append(textElement)
+        stage.append(imageElement);
+        stage.append(textElement);
+
+        if (options.image === "img/present.jpg") {
+            // Add click event listener to the present image
+            imageElement.addEventListener('click', () => {
+                createHearts();
+            });
+        }
 
         if (deleteAfter) {
             setTimeout(() => {
-                imageElement.remove()
-                textElement.remove()
-            }, screenDuration)
+                imageElement.remove();
+                textElement.remove();
+            }, screenDuration);
         }
     }
 
@@ -107,19 +112,32 @@
         if (i >= screens.length)
             return
         
-        addScreen(screens[i], i === screens.length - 1 ? false : true)
+        addScreen(screens[i], i === screens.length - 1 ? false : true);
 
         setTimeout(() => {
-            runThroughScreens(++i)
-        }, screenDuration)
+            runThroughScreens(++i);
+        }, screenDuration);
     }
 
     function stringToDom (htmlString) {
-        const dom = new DOMParser()
-        const domParsed = dom.parseFromString(htmlString, "text/html")
-        return domParsed.body.children[0]
+        const dom = new DOMParser();
+        const domParsed = dom.parseFromString(htmlString, "text/html");
+        return domParsed.body.children[0];
     }
-    
+
+    // Create and animate hearts
+    function createHearts() {
+        const heartsContainer = document.createElement('div');
+        heartsContainer.id = 'hearts-container';
+        stage.appendChild(heartsContainer);
+
+        for (let i = 0; i < 10; i++) { // Adjust the number of hearts as needed
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heartsContainer.appendChild(heart);
+        }
+    }
+
     // CSS styles for centering images
     const style = document.createElement('style');
     style.innerHTML = `
@@ -132,15 +150,15 @@
             max-height: 100%;
         }
         @media only screen and (max-width: 600px) {
-    /* Adjust the size and position of the image for smaller screens */
-    .image {
-        width: 80%; /* Adjust the width as needed */
-        height: auto; /* Maintain aspect ratio */
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-}
+            /* Adjust the size and position of the image for smaller screens */
+            .image {
+                width: 80%; /* Adjust the width as needed */
+                height: auto; /* Maintain aspect ratio */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+        }
     `;
     document.head.appendChild(style);
 })();
