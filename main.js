@@ -42,7 +42,7 @@
             textColor: "#E07CA0"
         },
         {
-            image: "img/flower.png",
+            image: "img/present.jpg",
             imageAnimation: "fadeIn",
             text: "送你的礼物",
             textAnimation: "fadeIn",
