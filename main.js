@@ -51,20 +51,24 @@
         
     ]
     
-    // play on press
-    stage.addEventListener('click', _ => {
-        if (isPlaying)
-            return
-        
-        isPlaying = true
-        song.play()
-        title.innerText = ""
-        
+   // play on press
+stage.addEventListener('click', event => {
+    if (!isPlaying) {
+        isPlaying = true;
+        song.play();
+        title.innerText = "";
+
         setTimeout(() => {
-            title.innerText = "You're the..."
-            runThroughScreens()
-        }, 2000)
-    })
+            title.innerText = "You're the...";
+            runThroughScreens();
+        }, 2000);
+    }
+
+    // Check if the clicked target is the present image
+    if (event.target.tagName === 'IMG' && event.target.src.includes('present.jpg')) {
+        createHearts();
+    }
+});
 
     function addScreen (options, deleteAfter) {
         const imageElementString = `
