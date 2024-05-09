@@ -1,10 +1,10 @@
 (() => {
     // variables
-    const song = new Audio("sounds/xiaomeiman.mp3")
-    const stage = document.getElementById("stage")
-    const title = document.getElementById("title")
-    const screenDuration = 5000 // ms
-    let isPlaying = false
+    const song = new Audio("sounds/xiaomeiman.mp3");
+    const stage = document.getElementById("stage");
+    const title = document.getElementById("title");
+    const screenDuration = 5000; // ms
+    let isPlaying = false;
     const screens = [
         {
             image: "img/mompic.png",
@@ -49,28 +49,28 @@
             textColor: "#E07CA0"
         },
         
-    ]
-    
-   // play on press
-stage.addEventListener('click', event => {
-    if (!isPlaying) {
-        isPlaying = true;
-        song.play();
-        title.innerText = "";
+    ];
 
-        setTimeout(() => {
-            title.innerText = "You're the...";
-            runThroughScreens();
-        }, 2000);
-    }
+    // play on press
+    document.body.addEventListener('click', event => {
+        if (!isPlaying) {
+            isPlaying = true;
+            song.play();
+            title.innerText = "";
 
-    // Check if the clicked target is the present image
-    if (event.target.tagName === 'IMG' && event.target.src.includes('present.jpg')) {
-        createHearts();
-    }
-});
+            setTimeout(() => {
+                title.innerText = "You're the...";
+                runThroughScreens();
+            }, 2000);
+        }
 
-    function addScreen (options, deleteAfter) {
+        // Check if the click occurred within the stage area
+        if (event.target === stage) {
+            createHearts();
+        }
+    });
+
+    function addScreen(options, deleteAfter) {
         const imageElementString = `
         <img src="${
             options.image
@@ -97,13 +97,6 @@ stage.addEventListener('click', event => {
         stage.append(imageElement);
         stage.append(textElement);
 
-        if (options.image === "img/present.jpg") {
-            // Add click event listener to the present image
-            imageElement.addEventListener('click', () => {
-                createHearts();
-            });
-        }
-
         if (deleteAfter) {
             setTimeout(() => {
                 imageElement.remove();
@@ -112,7 +105,7 @@ stage.addEventListener('click', event => {
         }
     }
 
-    function runThroughScreens (i = 0) {
+    function runThroughScreens(i = 0) {
         if (i >= screens.length)
             return
         
@@ -123,7 +116,7 @@ stage.addEventListener('click', event => {
         }, screenDuration);
     }
 
-    function stringToDom (htmlString) {
+    function stringToDom(htmlString) {
         const dom = new DOMParser();
         const domParsed = dom.parseFromString(htmlString, "text/html");
         return domParsed.body.children[0];
