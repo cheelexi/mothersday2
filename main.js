@@ -61,7 +61,7 @@
         title.innerText = ""
         
         setTimeout(() => {
-            title.innerText = "You're the..."
+            title.innerText = "Happy Mother's day"
             runThroughScreens()
         }, 2000)
     })
