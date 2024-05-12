@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Mother's Day</title>
-
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
     <style>
@@ -12,6 +11,7 @@
             height: 100%;
             margin: 0;
             overflow: hidden;
+            background-color: pink; /* Change background color to pink */
         }
         .container {
             position: relative;
@@ -28,15 +28,15 @@
         }
         .heart {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-image: url('img/heartqueen.png'); /* Replace with your heart image */
+            width: 50px; /* Adjust heart size as needed */
+            height: 50px;
+            background-image: url('img/heartqueen.png'); /* Replace 'heart.png' with the correct path to your heart image */
             background-size: contain;
             animation: flowHearts linear infinite;
         }
         @keyframes flowHearts {
             0% {
-                transform: translateY(0) rotate(0deg);
+                transform: translateY(100vh) rotate(0deg);
             }
             100% {
                 transform: translateY(-100vh) rotate(360deg);
@@ -58,6 +58,6 @@
         </div>
     </div>
 
-<script src="main.js"></script>
+    <script src="main.js"></script>
 </body>
 </html>
