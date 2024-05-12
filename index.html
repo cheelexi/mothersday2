@@ -7,12 +7,57 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Pacifico&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+        .container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-image: url('heart.png'); /* Replace with your heart image */
+            background-size: contain;
+            animation: flowHearts linear infinite;
+        }
+        @keyframes flowHearts {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+    </style>
 </head>
 <body>
     <div id="stage" class="stage">
         <h1 id="title" class="title">Click to Start</h1>
+        <!-- Heart container and hearts -->
+        <div class="container">
+            <div class="hearts-container">
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <div class="heart"></div>
+                <!-- Add more hearts as needed -->
+            </div>
+        </div>
     </div>
-</body>
 
 <script src="main.js"></script>
+</body>
 </html>
